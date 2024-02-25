@@ -16,8 +16,5 @@ export const ThemeTogglerButton = () => {
                 <FontAwesomeIcon icon={theme.icon} />
             </Button>
         </>
-
     )
-
-
 }

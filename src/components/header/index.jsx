@@ -20,7 +20,7 @@ export const Header = () => {
                     <A
                         style={{ color: theme.color }}
                         href="#">
-                        Exercices
+                        Exercises
                     </A>
                 </Li>
                 <Li>

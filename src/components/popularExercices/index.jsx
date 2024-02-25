@@ -10,19 +10,19 @@ import stretching from '../../assets/stretching.jpg'
 import treadmill from '../../assets/treadmill.jpg'
 import yoga from '../../assets/yoga.jpg'
 
-export const PopularExercices = () => {
+export const PopularExercises = () => {
     const { theme } = useContext(ThemeContext);
     return (
         <Container style={{ color: theme.color }}>
-            <Title>Popular Exercices</Title>
-            <Exercices>
+            <Title>Popular Exercises</Title>
+            <Exercises>
                 <Exercise src={treadmill} alt="treadmill" title="Treadmill"/>
                 <Exercise src={stretching} alt="stretching" title="Stretching"/>
                 <Exercise src={yoga} alt="yoga" title="Yoga"/>
                 <Exercise src={running} alt="running" title="Running"/>
                 <Exercise src={lifting} alt="lifting" title="Lifting"/>
                 <Exercise src={pushUp} alt="push up" title="Push Up"/>
-            </Exercices>
+            </Exercises>
         </Container>
     )
 }
@@ -38,14 +38,14 @@ const Container = styled.section`
     transition: .3s;
     display: flex;
     flex-direction: column;
-    max-width: 1600px;
+    max-width: 1440px;
     margin-bottom: 150px;
     position: relative;
     gap: 40px;
     align-items: center;
 `
 
-const Exercices = styled.section`
+const Exercises = styled.section`
     display: flex;
     justify-content: center;
     gap: 50px;

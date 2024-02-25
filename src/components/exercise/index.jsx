@@ -13,7 +13,7 @@ export const Exercise = (props) => {
                     transition: `.3s`
                 }}
             >
-                <ExerciceTitle>{props.title}</ExerciceTitle>
+                <ExerciseTitle>{props.title}</ExerciseTitle>
                 <VideoDuration
                     style={{
                         backgroundColor: theme.backgroundColor,
@@ -28,8 +28,15 @@ export const Exercise = (props) => {
 const Video = styled.div`
     width: 350px;
     position: relative;
+    cursor: pointer;
+    transition: .3s;
     @media (max-width: 560px) {
         width: 100%;
+    };
+    &:hover {
+        opacity: .6;
+        width: 340px;
+        margin: 0 5px;
     }
 `
 
@@ -55,7 +62,7 @@ const Div = styled.div`
     }
 `
 
-const ExerciceTitle = styled.h3`
+const ExerciseTitle = styled.h3`
     font-size: 55px;
     font-weight: 700;
     @media (max-width: 830px) {
