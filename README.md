@@ -2,7 +2,7 @@
 
 🧾✍ Este projeto foi baseado neste [Projeto Figma](https://www.figma.com/file/k1DNeyUX1Go6PzK745JEjm/Fitness-Landing-Page-(Community)?type=design&node-id=0-1&mode=design&t=6ri2f4Hb4lgjpXNu-0).
 
-<img src="./src/screenshots/design.bmp" alt="desktop preview" style="box-shadow: 0 0 10px">
+<img src="./src/screenshots/design.png" alt="desktop preview">
 
 ## Sumário
 
