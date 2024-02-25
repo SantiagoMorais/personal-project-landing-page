@@ -26,7 +26,7 @@
 Objetivos:
 
 - Criar um botão que mude o tema de fundo da página entre light e dark;
-- Guardar os dados do tema no localStore para que, ao recarregar a página, o tema escolhido permanecesse, não comente o tema padrão;
+- Guardar os dados do tema no localStore para que, ao recarregar a página, o tema escolhido permanecesse, não somente o tema padrão;
 - Utilizar o hook useContext para enviar os dados do tema para todos os componentes, assim diminuir o uso de props;
 - Criar botões interativos que possam alterar seus estivos utilizando o ```hover```;
 - Gerar responsividade à página para que possa ser melhor visualizada em todos os dispositivos.
@@ -60,7 +60,7 @@ Objetivos:
 - localStore
 
 ### Funcionalidade do projeto
-O objetivo principal é criar uma página que alterne entre os temas "dark" e "light" ao clicar no botão posicionado no header. Para isso, foi necessário utilizar o "Context API", que é uma API do react, onde eu crio um contexto em que as informações que quero passar para todos os meus componentes serão salvas nele. Dessa forma eu evito o [Prop Drilling](https://www.alura.com.br/artigos/prop-drilling-no-react-js?utm_term=&utm_campaign=&utm_source=adwords&utm_medium=ppc&hsa_acc=7964138385&hsa_cam=20987928442&hsa_grp=157916200306&hsa_ad=689395782879&hsa_src=g&hsa_tgt=dsa-2273097816642&hsa_kw=&hsa_mt=&hsa_net=adwords&hsa_ver=3&gad_source=1&gclid=Cj0KCQiA5-uuBhDzARIsAAa21T_AxdbFCWCfuq5gVHnCFGok4TEr7F7UK3vmd2m2DHPIO6qBCWtU7SMaAqHjEALw_wcB), pois não preciso criar props sempre que quero transmitir informações entre meus componentes pais e filhos. 
+O objetivo principal é criar uma página que alterne entre os temas "dark" e "light" ao clicar no botão posicionado no header. Para isso, foi necessário utilizar o "Context API", que é uma API do react, onde é criado um contexto em que as informações que quero passar para todos os meus componentes serão salvas nele. Dessa forma eu evito o [Prop Drilling](https://www.alura.com.br/artigos/prop-drilling-no-react-js?utm_term=&utm_campaign=&utm_source=adwords&utm_medium=ppc&hsa_acc=7964138385&hsa_cam=20987928442&hsa_grp=157916200306&hsa_ad=689395782879&hsa_src=g&hsa_tgt=dsa-2273097816642&hsa_kw=&hsa_mt=&hsa_net=adwords&hsa_ver=3&gad_source=1&gclid=Cj0KCQiA5-uuBhDzARIsAAa21T_AxdbFCWCfuq5gVHnCFGok4TEr7F7UK3vmd2m2DHPIO6qBCWtU7SMaAqHjEALw_wcB), pois não preciso criar props sempre que quero transmitir informações entre meus componentes pais e filhos. 
 
 A princípio foi criado o contexto "theme-context", onde nele guardo meu objeto que possui os detalhes dos estilos de cada tema da página.
 
@@ -135,7 +135,7 @@ export const Container = () => {
 }
 ```
 
-Como vemos acima, após criarmos o Contexto e o Provedor do Context API, todos os componentes englobados pelo provedor podem utilizar os dados do contexto. Ao utilizar a desestruturação de objetos, posso coletar qualquer valor do contexto utilizando o hook ```useContext``` e, entre parênteses, coloco o contexto que quero utilizar, pois posso ter mais de um contexto por projeto. No nosso caso, chamamos o nosso ThemeContext ```useContext(ThemeContext)```. Por fim, posso utilizar os dados do meu objeto, como a cor do background, color, secondaryColor, etc.
+Como vemos acima, após criarmos o Contexto e o Provedor do Context API, todos os componentes englobados pelo provedor podem utilizar os dados do contexto. Ao utilizar a desestruturação de objetos, posso coletar qualquer valor do contexto utilizando o hook ```useContext``` e, entre colchetes, coloco o contexto que quero utilizar, pois posso ter mais de um contexto por projeto. No nosso caso, chamamos o nosso ThemeContext ```useContext(ThemeContext)```. Por fim, posso utilizar os dados do meu objeto, como a cor do background, color, secondaryColor, etc.
 
 Por fim, posso alternar o tema ao clicar no meu botão, que recebeu a propriedade setTheme, para alternar o tema. Assim, todos os componentes que estão utilizando o estado do **theme** irão alternar juntos ao acionarmos a função que troca o tema.
 
@@ -183,11 +183,13 @@ Os temas foram definidos e também podem ser alternados. Porém, um problema enc
 
 <img src="./src/screenshots/project-without-localStorage.gif" alt="Projeto sem o localStore" title="Projeto sem o localStore">
 
-Assim, para que o tema escolhido seja salvo, é necessário utilizar o localStore, como o nome diz, é um armazenador local de informações utilizado pelo próprio navegador. Passamos para o localStore o nosso tema e, caso o tema seja dark, o localStore irá guardar aquela informação e, ao recarregar a página, o tema anteriormente selecionado permanecerá, graças à informação que foi salva dentro do próprio navegador do usuário.
+Assim, para que o tema escolhido seja salvo, é necessário utilizar o localStore, como o nome diz, é um armazenador local de informações utilizado pelo próprio navegador. Passamos para o localStore o nosso tema e, caso o tema seja dark, o localStore irá guardar essa informação e, ao recarregar a página, o tema anteriormente selecionado permanecerá, graças à informação que foi salva dentro do próprio navegador do usuário.
 
 <img src="./src/screenshots/project-with-localStorage.gif" alt="Projeto com o localStore" title="Projeto com o localStore">
 
 Para concluir, também utilizei o styledComponents, para me ajudar a estilizar os meus componentes de forma individual. Basicamente criamos uma variável que será utilizada como um componente pela biblioteca styledComponents e assim posso utilizá-lo dentro do meu componente. Dessa forma, o estilo definido a ele será renderizado.
+
+Escrevo o meu estilo entre crases, utilizando **tagged template literals**, dessa forma posso utilizar também código Javascript dentro do estilo, caso necessário.
 
 ```jsx
 const Button = styled.button`
@@ -208,6 +210,12 @@ const Button = styled.button`
         width: 150px;
     }
 `
+```
+
+```jsx
+export const MyComponent = () => {
+    return <Button> Get Started </Button>
+}
 ```
 
 ### Como executar o projeto
