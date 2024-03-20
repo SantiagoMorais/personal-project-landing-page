@@ -1,49 +1,71 @@
 import styled from "styled-components"
 import { ThemeTogglerButton } from "../theme-toggler-button"
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import { ThemeContext } from "../../contexts/theme-context"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons"
 
 export const Header = () => {
     const { theme } = useContext(ThemeContext);
+    const [isClicked, setIsClicked] = useState(false);
+
+    const handleButtonClick = () => {
+        setIsClicked(!isClicked);
+    }
+
     return (
-        <Section
+        <Container
             style={{
                 color: theme.color
             }}
         >
-            <h2>Workout</h2>
-            <Ul>
-                <Li>
-                    <ThemeTogglerButton />
-                </Li> 
-                <Li>
-                    <A
-                        style={{ color: theme.color }}
-                        href="#">
-                        Exercises
-                    </A>
-                </Li>
-                <Li>
-                    <A
-                        style={{ color: theme.color }}
-                        href="#">Trainers</A>
-                </Li>
-                <Li>
-                    <A
-                        style={{ color: theme.color }}
-                        href="#">Pricing</A>
-                </Li>
-                <Li>
-                    <A
-                        style={{ color: theme.color }}
-                        href="#">Login</A>
-                </Li>
-            </Ul>
-        </Section>
+            <h2 className="title">Workout</h2>
+            <nav className="navBar">
+                <button className={`hamburguerButton ${isClicked ? "clicked" : ""}`} style={{ color: theme.color }} onClick={handleButtonClick}>
+                    <FontAwesomeIcon className="icon" icon={isClicked ? faTimes : faBars} />
+                </button>
+
+                <ul
+                    className={`list ${isClicked ? "clicked" : ""}`}
+                    style={{
+                        backgroundColor: `${isClicked ? theme.backgroundColor : ''}`,
+                        border: `${isClicked ? `1px solid ${theme.color}` : ''}`,
+                        transition: ".3s",
+                    }}
+                >
+                    <li className="item">
+                        <ThemeTogglerButton />
+
+                    </li>
+                    <li className="item">
+                        <a className="link"
+                            style={{ color: theme.color }}
+                            href="#">
+                            Exercises
+                        </a>
+                    </li>
+                    <li className="item">
+                        <a className="link"
+                            style={{ color: theme.color }}
+                            href="#">Trainers</a>
+                    </li>
+                    <li className="item">
+                        <a className="link"
+                            style={{ color: theme.color }}
+                            href="#">Pricing</a>
+                    </li>
+                    <li className="item">
+                        <a className="link"
+                            style={{ color: theme.color }}
+                            href="#">Login</a>
+                    </li>
+                </ul>
+            </nav>
+        </Container>
     )
 }
 
-const Section = styled.section`
+const Container = styled.section`
     display: flex;
     justify-content: space-between;
     text-transform: uppercase;
@@ -51,33 +73,104 @@ const Section = styled.section`
     width: 100%;
     margin-bottom: 80px;
     max-width: 1440px;
+
+    .navBar {
+        position: relative;
+
+        .hamburguerButton {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: .3s;
+
+            &.clicked {
+                transform: rotate(90deg);
+            }
+        }
+
+        .list {
+            display: flex;
+            gap: 20px;
+            font-size: 12px;
+            align-items: center;
+            transition: .5s;
+
+            .item {
+                font-weight: 500;
+
+                .link {
+                    transition: .3s;
+                    padding:5px;
+                    border-radius: 5px;
+
+                    &:hover {
+                        background-color: #25ab75;
+                    }
+                }
+            }
+        }
+    }
+
     @media (max-width: 560px) {
         flex-direction: column;
         align-items: center;
         gap: 20px;
         margin-bottom: 40px;
+
+        .navBar {
+            .list {
+                gap: 15px;
+            }
+        }
     }
-`
 
-const Ul = styled.ul`
-    display: flex;
-    gap: 20px;
-    font-size: 12px;
-    align-items: center;
-    @media (max-width: 560px) {
-        gap: 15px;
-    };
-`
+    @media (max-width: 375px) {
+        .navBar {
+            display: flex;
+            gap: 10px;
+            width: 140px;
+            height: 30px;
 
-const Li = styled.li`
-    font-weight: 500;
-`
+            .hamburguerButton {
+                display: block;
+                order: 2;
+                padding: 10px;
+                border-radius: 8px;
+                height: fit-content;
+                position: absolute;
+                right: 0;
+                top: -10px;
+                width: 45px;
+                transition: .3s;
 
-const A = styled.a`
-    transition: .3s;
-    padding:5px;
-    border-radius: 5px;
-    &:hover {
-        background-color: #25ab75;
+                .icon {
+                    font-size: 28px;
+                    transition: .3s;
+                }
+
+                &:hover > .icon {
+                    opacity: .8;
+                    font-size: 30px;
+                }
+            }
+
+            .list {
+                flex-direction: column;
+                padding: 10px;
+                height: 40px;
+                overflow: hidden;
+                position: absolute;
+                z-index: 2;
+                left: 0;
+                top: -10px;
+                border-radius: 8px;
+                border: 1px solid transparent;
+
+                &.clicked {
+                    height: 170px;
+                }
+            }
+        }
     }
 `

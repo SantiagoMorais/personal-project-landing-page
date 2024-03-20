@@ -2,37 +2,27 @@ import { useContext } from "react"
 import { ThemeContext } from "../../contexts/theme-context"
 import { Exercise } from "../exercise"
 import styled from "styled-components"
-
-import lifting from '../../assets/lifting.jpg'
-import pushUp from '../../assets/push-up.jpg'
-import running from '../../assets/running.jpg'
-import stretching from '../../assets/stretching.jpg'
-import treadmill from '../../assets/treadmill.jpg'
-import yoga from '../../assets/yoga.jpg'
+import { exercices } from "../../variables"
 
 export const PopularExercises = () => {
     const { theme } = useContext(ThemeContext);
+
     return (
         <Container style={{ color: theme.color }}>
-            <Title>Popular Exercises</Title>
-            <Exercises>
-                <Exercise src={treadmill} alt="treadmill" title="Treadmill"/>
-                <Exercise src={stretching} alt="stretching" title="Stretching"/>
-                <Exercise src={yoga} alt="yoga" title="Yoga"/>
-                <Exercise src={running} alt="running" title="Running"/>
-                <Exercise src={lifting} alt="lifting" title="Lifting"/>
-                <Exercise src={pushUp} alt="push up" title="Push Up"/>
-            </Exercises>
+            <h2 className="title">Popular Exercises</h2>
+            <div className="exercices">
+                {exercices.map((exercice, index) =>
+                    <Exercise
+                        key={index}
+                        src={exercice.src}
+                        alt={exercice.alt}
+                        title={exercice.title}
+                    />
+                )}
+            </div>
         </Container>
     )
 }
-
-const Title = styled.h2`
-    font-size: 35px;
-    @media (max-width: 830px) {
-        font-size: 25px;
-    }
-`
 
 const Container = styled.section`
     transition: .3s;
@@ -43,11 +33,21 @@ const Container = styled.section`
     position: relative;
     gap: 40px;
     align-items: center;
-`
 
-const Exercises = styled.section`
-    display: flex;
-    justify-content: center;
-    gap: 50px;
-    flex-wrap: wrap;
+    .title {
+        font-size: 35px;
+    }
+
+    .exercices {
+        display: flex;
+        justify-content: center;
+        gap: 50px;
+        flex-wrap: wrap;
+    }
+
+    @media (max-width: 830px) {
+        .title {
+            font-size: 25px;
+        }
+    }
 `

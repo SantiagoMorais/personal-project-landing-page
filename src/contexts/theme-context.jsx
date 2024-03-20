@@ -30,13 +30,6 @@ export const ThemeProvider = (props) => {
         window.localStorage.setItem('themeKey', JSON.stringify(theme))
     }, [theme]);
 
-    useEffect(() => {
-        const storedTheme = JSON.parse(localStorage.getItem('themeKey'));
-        if (storedTheme) {
-            setTheme(storedTheme);
-        }
-    }, []);
-
     return (
         <ThemeContext.Provider value={{ theme, setTheme }}>
             {props.children}

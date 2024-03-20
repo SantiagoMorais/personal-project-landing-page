@@ -6,21 +6,21 @@ export const Exercise = (props) => {
     const { theme } = useContext(ThemeContext)
     return (
         <Video>
-            <Image src={props.src} alt={props.alt} />
-            <Div
+            <img className="thumbnail" src={props.src} alt={props.alt} />
+            <div className="titleShadow"
                 style={{
                     boxShadow: `0 -60px 15px ${theme.backgroundColor} inset`,
                     transition: `.3s`
                 }}
             >
-                <ExerciseTitle>{props.title}</ExerciseTitle>
-                <VideoDuration
+                <h3 className="exerciceTitle">{props.title}</h3>
+                <p className="videoDuration"
                     style={{
                         backgroundColor: theme.backgroundColor,
                         transition: `.3s`
                     }}
-                >58:24</VideoDuration>
-            </Div>
+                >58:24</p>
+            </div>
         </Video>
     )
 }
@@ -30,51 +30,92 @@ const Video = styled.div`
     position: relative;
     cursor: pointer;
     transition: .3s;
-    @media (max-width: 560px) {
+
+    .thumbnail {
         width: 100%;
-    };
+        border-radius: 12px;
+        height: 250px;
+        object-fit: cover;
+    }
+
+    .titleShadow {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: absolute;
+        bottom: -40px;
+        left: -10px;
+        width: 105%;
+        padding-left: 20px;
+        height: 100px;
+
+        .exerciceTitle {
+            font-size: 55px;
+            font-weight: 700;
+        }
+    
+        .videoDuration {
+            padding: 5px;
+            border-radius: 5px;
+            font-weight: 700;
+        }
+    }
+
+
     &:hover {
         opacity: .6;
         width: 340px;
         margin: 0 5px;
     }
-`
 
-const Image = styled.img`
-    width: 100%;
-    border-radius: 12px;
-    height: 250px;
-    object-fit: cover;
-`
-
-const Div = styled.div`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: absolute;
-    bottom: -40px;
-    left: -10px;
-    width: 105%;
-    padding-left: 20px;
-    height: 100px;
     @media (max-width: 830px) {
-        padding-left: 40px;
-    }
-`
 
-const ExerciseTitle = styled.h3`
-    font-size: 55px;
-    font-weight: 700;
-    @media (max-width: 830px) {
-    font-size: 30px;   
-    }
-`
+        .titleShadow {
+            padding-left: 40px;
 
-const VideoDuration = styled.p`
-    padding: 5px;
-    border-radius: 5px;
-    font-weight: 700;
-    
+            .exerciceTitle {
+                font-size: 30px; 
+            }
+        }
+
+    }
+
+    @media (max-width: 560px) {
+        width: 300px;
+
+        &:hover {
+            width: 280px;
+            margin: 0 10px;
+        }
+    };
+
+    @media (max-width: 375px) {
+        width: 100%;
+
+        .titleShadow {
+            flex-direction: column;
+            justify-content: center;
+            bottom: -40px;
+            width: 105%;
+            padding-left: 20px;
+            height: 80px;
+
+            .exerciceTitle {
+                font-size: 22px;
+            }
+
+            .videoDuration {
+                border: 1px solid;
+                padding: 2px 8px;
+            }
+        }
+
+
+        &:hover {
+            width: 90%;
+            margin: 0 5%;
+        }
+    }
 `
 
 Exercise.defaultProps = {

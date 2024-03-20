@@ -7,7 +7,7 @@ export const ThemeTogglerButton = () => {
     const { theme, setTheme } = useContext(ThemeContext);
 
     const toggleTheme = () => {
-        setTheme(theme === themes.light ? themes.dark : themes.light);
+        setTheme(theme.color === themes.light.color ? themes.dark : themes.light);
     };
 
     return (
