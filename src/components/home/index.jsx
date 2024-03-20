@@ -24,16 +24,17 @@ export const Home = () => {
 
 const Container = styled.section`
     width: 100vw;
-    min-height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
 
     .home {
-        min-width: 100vw;
-        min-height: 100vh;
+        width: 100%;
         padding: 40px 80px;
         display: flex;
         flex-direction: column;
         align-items: center;
-        transition: ".3s"
+        transition: ".3s";
         max-width: 1440px;
     
         @media (max-width: 1040px) {
