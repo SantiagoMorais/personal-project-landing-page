@@ -2,7 +2,7 @@
 
 🧾✍ Este projeto foi baseado neste [Projeto Figma](https://www.figma.com/file/k1DNeyUX1Go6PzK745JEjm/Fitness-Landing-Page-(Community)?type=design&node-id=0-1&mode=design&t=6ri2f4Hb4lgjpXNu-0).
 
-<img src="./src/screenshots/design.png" alt="desktop preview">
+<img src="./src/assets/screenshots/design.png" alt="desktop preview">
 
 ## Sumário
 
@@ -35,15 +35,15 @@ Objetivos:
 
 #### Funcionalidade do projeto
 
-<img src="./src/screenshots/project-functionality.gif" alt="Gif do projeto" title="Gif do projeto" width=80%>
+<img src="./src/assets/screenshots/project-functionality.gif" alt="Gif do projeto" title="Gif do projeto" width=80%>
 
 #### Responsividade do projeto
 
-<img src="./src/screenshots/project-responsiveness.gif" alt="Responsividade do projeto" title="Responsividade do projeto" width=80%>
+<img src="./src/assets/screenshots/project-responsiveness.gif" alt="Responsividade do projeto" title="Responsividade do projeto" width=80%>
 
 #### Hover
 
-<img src="./src/screenshots/project-hover.gif" alt="Hover do projeto" title="Responsividade do projeto" width=80%>
+<img src="./src/assets/screenshots/project-hover.gif" alt="Hover do projeto" title="Responsividade do projeto" width=80%>
 
 ## Meu processo
 
@@ -181,11 +181,11 @@ export const PopularExercises = () => {
 ```
 Os temas foram definidos e também podem ser alternados. Porém, um problema encontrado é que quando recarregamos a página, o nosso tema anteriormente escolhido não é salvo. Dessa forma, o tema padrão, o light, sempre será recarregado quando o usuário recarregar a página, como podem observar no gif abaixo sem o uso do localStore.
 
-<img src="./src/screenshots/project-without-localStorage.gif" alt="Projeto sem o localStore" title="Projeto sem o localStore">
+<img src="./src/assets/screenshots/project-without-localStorage.gif" alt="Projeto sem o localStore" title="Projeto sem o localStore">
 
 Assim, para que o tema escolhido seja salvo, é necessário utilizar o localStore, como o nome diz, é um armazenador local de informações utilizado pelo próprio navegador. Passamos para o localStore o nosso tema e, caso o tema seja dark, o localStore irá guardar essa informação e, ao recarregar a página, o tema anteriormente selecionado permanecerá, graças à informação que foi salva dentro do próprio navegador do usuário.
 
-<img src="./src/screenshots/project-with-localStorage.gif" alt="Projeto com o localStore" title="Projeto com o localStore">
+<img src="./src/assets/screenshots/project-with-localStorage.gif" alt="Projeto com o localStore" title="Projeto com o localStore">
 
 Para concluir, também utilizei o styledComponents, para me ajudar a estilizar os meus componentes de forma individual. Basicamente criamos uma variável que será utilizada como um componente pela biblioteca styledComponents e assim posso utilizá-lo dentro do meu componente. Dessa forma, o estilo definido a ele será renderizado.
 
@@ -227,15 +227,15 @@ export const MyComponent = () => {
 
 - Para rodar o projeto no navegador é necessário ativar o **NPM Scripts** nos três pontos ao lado do EXPLORER do VSCODE
 
-<img src='./src/screenshots/Instruções-passo-1.bmp' alt="instruções passo 1">
+<img src='./src/assets/screenshots/Instruções-passo-1.bmp' alt="instruções passo 1">
 
 - Em seguida, na janela inferior esquerda do **NPM SCRIPTS** clicar no botão **run** do package.json/dev vite
 
-<img src='./src/screenshots/Instruções-passo-2.bmp' alt="instruções passo 2">
+<img src='./src/assets/screenshots/Instruções-passo-2.bmp' alt="instruções passo 2">
 
 - Por fim, no terminal irá aparecer o **local-host** que será executado no seu navegador o projeto. Passe o mouse sobre ele e clique em **Follow link** ou pressione o botão **ctrl** do seu teclado e clique em cima do **local-host** e a página abrirá no seu navegador padrão.
 
-<img src='./src/screenshots/Instruções-passo-3.bmp' alt="instruções passo 3">
+<img src='./src/assets/screenshots/Instruções-passo-3.bmp' alt="instruções passo 3">
 
 Há outras formas de se abrir o projeto, porém esta é a forma que eu costumo optar em usar.
 
